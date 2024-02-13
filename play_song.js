@@ -13,7 +13,9 @@ const fatchsong = async () => {
 
     let a = await fetch("https://github.com/NIRMAL-PRAJAPATI/spotify-clone/tree/main/songs/",
     {
-        mode:  'no-cors'
+        mode:  'no-cors',
+        method: 'GET',
+        credentials: 'include'
     });
     let response = await a.text();
 
