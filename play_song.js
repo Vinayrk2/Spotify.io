@@ -11,7 +11,10 @@ let singers = ["neesarg ass", "pro popli", "vinyo rock", "chapri gangstar", "spl
 // this function is fatch the song from the API and create the song array
 const fatchsong = async () => {
 
-    let a = await fetch("https://github.com/NIRMAL-PRAJAPATI/spotify-clone/tree/main/songs/");
+    let a = await fetch("https://github.com/NIRMAL-PRAJAPATI/spotify-clone/tree/main/songs/",
+    {
+        mode:  'no-cors'
+    });
     let response = await a.text();
 
     div.innerHTML = response;
