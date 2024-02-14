@@ -11,6 +11,13 @@ let singers = ["neesarg ass", "pro popli", "vinyo rock", "chapri gangstar", "spl
 // this function is fatch the song from the API and create the song array
 const fatchsong = async () => {
 
+    $('.playsongnavicon').click(function () {
+        leftbox.style.position = "absolute";
+        leftbox.style.left = "0vw";
+        leftbox.style.width = "100vw";
+        leftbox.style.transition = "0.5s";
+    })
+
     let a = await fetch("http://127.0.0.1:5500/songs/");
     let response = await a.text();
 
@@ -78,13 +85,6 @@ let main = async () => {
     let songs = await fatchsong();
 
     await songadder();
-
-    $('.playsongnavicon').click(function () {
-        leftbox.style.position = "absolute";
-        leftbox.style.left = "0vw";
-        leftbox.style.width = "100vw";
-        leftbox.style.transition = "0.5s";
-    })
 
     // this event is used to take current song from data and set the current song's data
     $("#tbody tr").click(function (e) {
