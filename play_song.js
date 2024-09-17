@@ -18,7 +18,7 @@ const fatchsong = async () => {
         leftbox.style.transition = "0.5s";
     })
 
-    let a = await fetch("http://127.0.0.1:5500/songs/");
+    let a = await fetch("https://nirmal-prajapati.github.io/spotify-clone/songs/");
     let response = await a.text();
 
     div.innerHTML = response;
