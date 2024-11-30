@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/play_song.css">
+</head>
+
+<body>
+    <div id="song_list_container">
+        <img id="navicon" class="playsongnavicon" src="img/menu.png" height="27" width="32">
+        <!-- song introduction -->
+        <div id="song_intro">
+            <img id="playlistposter" height="230" width="230" src="img/img poster 1.jpg" style="border-radius: 5px;">
+            <div id="song_list_details">
+                <p class="color">Playlist</p>
+                <h1 class="color" id="big_text">Nightstorms</h1><br>
+                <p style="color: rgb(146, 146, 146); margin-bottom: 5px;">chill beats, lofi vibes, new tracks every week...</p>
+                <p class="color">Spotify | 3,52,643 likes | 22 songs | over 24Hr</p>
+            </div>
+        </div>
+        <div id="listed_song">
+            <div style="display: flex; padding: 20px 0px 0px 20px; justify-content: space-between;">
+                <div>
+                    <img id="playlist_play_btn" src="img/play.png" height="30">
+                    <img id="like" class="some_img" src="img/like.png" height="45">
+                    <img class="some_img" src="img/more.png" height="40">
+                </div>
+                <img style="margin-right: 2%;" class="some_img" src="img/list.png" height="40">
+            </div>
+            <table>
+                <thead>
+                    <tr id="thead">
+                        <th id="th1">No</th>
+                        <th id="th2">Song Title</th>
+                        <th id="th3">Singer Name</th>
+                        <th id="th4">Release Date</th>
+                        <th id="th5">Duration</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <!-- song playbar -->
+                <div id="playbar">
+                    <!-- song details container box -->
+                    <div style="display: flex;">
+                    <div id="songdetails">
+                        <img id="currentsongimg" src="" height="35">
+                        <div id="currentsongnameandsinger">
+                            <h4 id="currentsongname"></h4>
+                            <p id="currentsongsinger"></p>
+                        </div>
+                    </div>
+                    <!-- song control and seekbar box -->
+                    <div id="control">
+                        <div id="songcontrol">
+                            <img id="sprevious" src="img/prev_next.png" height="30">
+                            <img id="splay" src="img/pause.png" height="40">
+                            <img id="snext" src="img/prev_next.png" style="transform: rotate(180deg);" height="30">
+                        </div>
+                    </div>
+                    <!-- audio and other control box -->
+                    <div id="othersongcontrol">
+                        <img class="othercontrolimg" src="img/volume.png" height="20">
+                        <div id="volumecontrol">
+                            <div id="volumecircle"></div>
+                        </div>
+                    </div>
+                    </div>
+                    <div style="display: flex; align-items: center;">
+                        <p id="currenttime" class="songtimer">00:00</p>
+                    <div id="seekbar">
+                        <div id="songcircle"></div>
+                    </div>
+                    <p id="totaltime" class="songtimer">00:00</p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="play_song.js" defer></script>
+</body>
+
+</html>
