@@ -1,16 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/css/styles.css">
-  <title><%= title %></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Clone - By sponzeal.com</title>
+    <link rel="icon" href="img/spotify icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/play_song.css">
 </head>
+
 <body>
-  <h1>Welcome to My Express App</h1>
-  <ul>
-      Home PAge
-    
-  </ul>
+    <div style="display: flex;">
+        <!-- left side box -->
+        <div id="left_box" class="">
+            <div id="lb_top" class="lfbox">
+                <div style="justify-content: space-between; display: flex;">
+                <img id="logo" class="cursor" src="img/spotify logo.png" height="30">
+                <img id="closenav" class="cursor" src="img/close.png" height="32" width="32">
+                </div>
+                <ul>
+                    <a style="text-decoration: none;" href=""><li class="cursor"><img src="img/home.png" height="30">&nbsp; Home</li></a>
+                    <a style="text-decoration: none;" href="#"><li class="cursor"><img src="img/search.png" height="30">&nbsp; Search</li></a>
+                    <a style="text-decoration: none;" href="https://github.com/NIRMAL-PRAJAPATI"><li class="cursor"><img src="img/github.png" height="30">&nbsp; GitHub Profile</li></a>
+                </ul>
+            </div>
+            <div id="lb_bottom" class="lfbox">
+                <div id="lib_div">
+                    <div style="display: flex;"><img src="img/library.png" height="22"> Your Library</div>
+                    <img class="cursor" src="img/plus.png" height="20">
+                </div>
+                <div id="scroll_bar">
+                    <div id="lib_list">
+                        <h4>Create your first playlist</h4>
+                        <h5 style="color: rgb(141, 141, 141); margin: 10px;">It's easy, Spotify will helps you</h5>
+                        <button id="lib_btn" class="cursor">Create Playlist</button>
+                    </div>
+                    <div id="lib_list">
+                        <h4>Let's find some podcasts to follow</h4>
+                        <h5 style="color: rgb(141, 141, 141); margin: 10px;">Spotify will keep you updated on new
+                            episodes</h5>
+                        <button id="lib_btn" class="cursor">Browse Podcasts</button>
+                    </div>
+                </div>
+                <div style="margin: 35px 0px 0px 20px;">
+                    <h4 style="color: gray;">Cookies</h4><br>
+                    <button id="lib_btn" class="cursor"><img src="img/language.png" height="20"
+                            style="margin-bottom: -5px;"> Language</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- right side box -->
+        <div id="right_box" class="lfbox">
+            <!-- navigation header -->
+            <div id="navigation">
+                <div id="navbar">
+                    <img id="nav_icon" src="img/nav.png" height="17">
+                    <img id="nav_icon" style="transform: rotate(180deg);" src="img/nav.png" height="17">
+                </div>
+                <div>
+                    <button id="lib_btn" style="margin-top: 0px; background-color: transparent; color: gray;">Log
+                        In</button>
+                    <button id="lib_btn" style="margin-top: 0px;">Sign Up</button>
+                </div>
+            </div>
+            <!-- song playlist cards -->
+            <div id="main_contant_container">
+                <h2 style="color: white; margin:80px 0px 0px 15px;">Spotify Playlists</h2>
+                <div id="card_container">
+                    <div class="cursor song_card">
+                        <img id="poster_img" src="img/img poster 1.jpg">
+                        <h4>Night Riders</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Strong beats, Energy Booster, Spacially for riders
+                        </h5>
+                    </div>
+                    <div class="cursor song_card">
+                        <img id="poster_img" src="img/img poster 4.jpg">
+                        <h4>Chillout Lounge</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Just lean back and enjoy relaxed songs</h5>
+                    </div>
+                    <div class="cursor song_card">
+                        <img id="poster_img" src="img/img poster 5.jpg">
+                        <h4>Tranding in India</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Hindi songs with populer hindi singers</h5>
+                    </div>
+                    <div class="cursor song_card">
+                        <img id="poster_img" src="img/img poster 2.jpg">
+                        <h4>Breakup Songs</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Smooth beats, Energy relaxer, Enjoy your sleep</h5>
+                    </div>
+                    <div class="cursor song_card">
+                        <img id="poster_img" src="img/img poster 8.jpg">
+                        <h4>Rock Classics</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Listern classic songs with rock beat</h5>
+                    </div>
+                </div>
+
+                <!-- podcast playlist code -->
+                <h2 style="color: white; margin:30px 0px 0px 15px;">Enjoy the Spotify Podcasts</h2>
+                <div id="card_container">
+                    <div class="cursor podcast_card">
+                        <img id="poster_img" src="img/podcast poster1.jpg">
+                        <h4>The Ranveer Show</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Meet and known about ranveer. also her strenth and weekness ...</h5>
+                    </div>
+                    <div class="cursor podcast_card">
+                        <img id="poster_img" src="img/podcast poster2.jpg">
+                        <h4>Triggered Insaan</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Listern the triggered Insaan's True story and journey of youtube ...</h5>
+                    </div>
+                    <div class="cursor podcast_card">
+                        <img id="poster_img" src="img/podcast poster3.jpg">
+                        <h4>Dhruv Rathee</h4>
+                        <h5 style="color: gray; margin-top: 7px;">Listern the mahabharat of counrty economy with dhruv rathee ...</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="script.js"></script>
+    <script src="play_song.js"></script>
 </body>
+
 </html>
