@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Playlist</title>
+    <title>Playlist | Spotify.io </title>
     <link rel="stylesheet" href="/css/play_song.css">
 </head>
 
@@ -42,7 +42,7 @@
                 </thead>
                 <tbody id="tbody">
                     <% playlist.song_list.forEach((element,key) => { %>
-                        <tr data-href="${songlist[i].href}" title="${songlist[i].title}">
+                        <tr data-href="<%= element.audio %>" title="<%= element.name %>">
                             <td> <%= key + 1 %> </td>
                             <td><div class="sandcname"><img style="margin-right: 10px;" src="<%= element.image %>" height="45">
                                     <div>
@@ -100,7 +100,7 @@
 
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script src="play_song.js" defer></script>
+    <script src="/staticjs/play_song.js" defer></script>
 </body>
 
 </html>

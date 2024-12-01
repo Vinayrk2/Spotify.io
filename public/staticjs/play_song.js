@@ -82,9 +82,9 @@ let main = async () => {
     let seekcircle = document.querySelector('#songcircle');
     let currentsong = new Audio();
 
-    let songs = await fatchsong();
+    // let songs = await fatchsong();
 
-    await songadder();
+    // await songadder();
 
     // this event is used to take current song from data and set the current song's data
     $("#tbody tr").click(function (e) {
