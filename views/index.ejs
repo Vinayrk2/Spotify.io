@@ -69,13 +69,18 @@
             <div id="main_contant_container">
                 <h2 style="color: white; margin:80px 0px 0px 15px;">Spotify Playlists</h2>
                 <div id="card_container">
-                    <div class="cursor song_card">
-                        <img id="poster_img" src="img/img poster 1.jpg">
-                        <h4>Night Riders</h4>
-                        <h5 style="color: gray; margin-top: 7px;">Strong beats, Energy Booster, Spacially for riders
-                        </h5>
-                    </div>
-                    <div class="cursor song_card">
+                    
+                    <% playlists.forEach(playlist => { %>
+                        <div class="cursor song_card">
+                            <a href="/playlist/<%= playlist.name%>/" >
+                            <img id="poster_img" src="<%= playlist.banner %>" >
+                            <h4> <%= playlist.name %> </h4>
+                            <h5 style="color: gray; margin-top: 7px;"> <%= playlist.description %>
+                            </h5>
+                            </a>
+                        </div>
+                    <% }) %>
+                    <!-- <div class="cursor song_card">
                         <img id="poster_img" src="img/img poster 4.jpg">
                         <h4>Chillout Lounge</h4>
                         <h5 style="color: gray; margin-top: 7px;">Just lean back and enjoy relaxed songs</h5>
@@ -94,7 +99,7 @@
                         <img id="poster_img" src="img/img poster 8.jpg">
                         <h4>Rock Classics</h4>
                         <h5 style="color: gray; margin-top: 7px;">Listern classic songs with rock beat</h5>
-                    </div>
+                    </div> -->
                 </div>
 
                 <!-- podcast playlist code -->

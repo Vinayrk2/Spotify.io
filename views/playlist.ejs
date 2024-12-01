@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Playlist</title>
     <link rel="stylesheet" href="/css/play_song.css">
 </head>
 
@@ -13,12 +13,12 @@
         <img id="navicon" class="playsongnavicon" src="/img/menu.png" height="27" width="32">
         <!-- song introduction -->
         <div id="song_intro">
-            <img id="playlistposter" height="230" width="230" src="/img/img poster 1.jpg" style="border-radius: 5px;">
+            <img id="playlistposter" height="230" width="230" src="<%= playlist.banner %>" style="border-radius: 5px;">
             <div id="song_list_details">
                 <p class="color">Playlist</p>
-                <h1 class="color" id="big_text">Nightstorms</h1><br>
-                <p style="color: rgb(146, 146, 146); margin-bottom: 5px;">chill beats, lofi vibes, new tracks every week...</p>
-                <p class="color">Spotify | 3,52,643 likes | 22 songs | over 24Hr</p>
+                <h1 class="color" id="big_text"><%= playlist.name %></h1><br>
+                <p style="color: rgb(146, 146, 146); margin-bottom: 5px;"> <%= playlist.description || "No description" %> </p>
+                <p class="color">Spotify.io | 3,52,643 likes | <%= playlist.song_list?.length %> songs | <%= playlist.language || "Universal Language" %></p>
             </div>
         </div>
         <div id="listed_song">
@@ -41,6 +41,20 @@
                     </tr>
                 </thead>
                 <tbody id="tbody">
+                    <% playlist.song_list.forEach((element,key) => { %>
+                        <tr data-href="${songlist[i].href}" title="${songlist[i].title}">
+                            <td> <%= key + 1 %> </td>
+                            <td><div class="sandcname"><img style="margin-right: 10px;" src="<%= element.image %>" height="45">
+                                    <div>
+                                    <h4 id="songtitle" class="color"><%= element.name %></h4>
+                                    <p><%= element.genre || "genre not specified" %></p>      
+                                    </div>
+                                </div></td>
+                                <td><%= element.artist ? "By " + element.artist.join(",") : "Unknown Artist" %></td>
+                            <td id="songreleasedate"><%= element.year || "Unknown" %></td>
+                            <td id="songduration"><%= element.duration || "Unknown" %></td>
+                        </tr>
+                    <% }) %>
                 </tbody>
             </table>
             <!-- song playbar -->
