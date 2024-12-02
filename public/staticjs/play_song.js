@@ -4,7 +4,7 @@ let div = document.createElement('div');
 let songlist = div.getElementsByTagName('a');
 let songtitle = document.querySelector("#songtitle");
 let table = document.querySelector('table');
-
+let songs;
 let song = [];
 let singers = ["neesarg ass", "pro popli", "vinyo rock", "chapri gangstar", "spl dhulo", "bhakt rudra", "sir nirmal"];
 
@@ -18,18 +18,9 @@ const fatchsong = async () => {
         leftbox.style.transition = "0.5s";
     })
 
-    let a = await fetch("./songs/");
-    let response = await a.text();
-
-    div.innerHTML = response;
-
-    for (let i = 0; i < songlist.length; i++) {
-        const ele = songlist[i];
-
-        if (ele.href.endsWith("mp3")) {
-            song.push(ele.href);
-        }
-    }
+    $("tr").filter("[data-href]").each((val,k)=>
+        song.push(k.dataset["href"])
+    )
     return song;
 }
 
@@ -80,54 +71,56 @@ let main = async () => {
     let totaltime = document.querySelector("#totaltime");
     let seekbar = document.querySelector('#seekbar');
     let seekcircle = document.querySelector('#songcircle');
-    let currentsong = new Audio();
-
-    // let songs = await fatchsong();
-
-    // await songadder();
+    let currentsong = new Audio()
+    songs = await fatchsong();
+    // let current_song_image = ""
+    console.log(songs)
 
     // this event is used to take current song from data and set the current song's data
     $("#tbody tr").click(function (e) {
-
+        console.log(e)
         audio = new Audio((e.currentTarget).dataset["href"]);
-
+        
+        
         audio.addEventListener("loadeddata", () => {
             currentsong.src = (e.currentTarget).dataset["href"];
             currentsong.play();
         });
 
-        currentsongimg.src = "img/music wave.gif";
-        currentsongname.innerHTML = e.currentTarget.title.split(".mp3")[0];
-        currentsongsinger.innerHTML = singers[1];
+        currentsongimg.src = (e.currentTarget).dataset["img"];
+        currentsongname.innerHTML = (e.currentTarget).dataset["title"];
+        currentsongsinger.innerHTML = (e.currentTarget).dataset["artists"];
         mainplaybar.style.opacity = "1";
         mainplaybar.style.zindex = "2"
     })
+
+    console.log($("#tbody tr"))
 
     // this event is used to plat and pause the song also change the UI img
     $(play).click(function () {
         if (currentsong.paused) {
             currentsong.play();
-            play.src = "img/pause.png";
+            play.src = "/img/pause.png";
         }
-
+        
         else if (currentsong.play) {
             currentsong.pause();
-            play.src = "img/splay.png";
+            play.src = "/img/splay.png";
         }
     })
-
+    
     // this is used to set the time and roll the seekbar's circle
     currentsong.addEventListener("timeupdate", () => {
 
         currenttime.innerHTML = secondandminutetimer(currentsong.currentTime);
         totaltime.innerHTML = secondandminutetimer(currentsong.duration);
-
+        
         seekcircle.style.left = (currentsong.currentTime / currentsong.duration) * 100 + "%";
-
+        
         if (currentsong.currentTime == currentsong.duration) {
             let index = songs.indexOf(currentsong.src);
 
-            if (index != song.length) {
+            if (index != (song.length-1)) {
                 let prevsong = index + 1;
                 currentsong.src = songs[prevsong];
                 currentsongname.innerHTML = songs[prevsong].split("songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
@@ -140,35 +133,48 @@ let main = async () => {
     // this is for set seekbar on the click
     seekbar.addEventListener("click", (e) => {
         let seekcirclecontroler = (e.offsetX / e.target.getBoundingClientRect().width) * 100;
-
+        
         seekbar.style.backgroundcolor = "green";
         seekcircle.style.left = seekcirclecontroler + "%";
         currentsong.currentTime = ((currentsong.duration) * seekcirclecontroler) / 100;
     })
-
+    
     // this is previous song button functionality
     $(previous).click(function () {
-        let index = songs.indexOf(currentsong.src);
-
+        let index = songs.indexOf(filter_song_path(currentsong.src));
+                
         if (index != 0) {
             let prevsong = index - 1;
             currentsong.src = songs[prevsong];
-            currentsongname.innerHTML = songs[prevsong].split("songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
+            currentsongname.innerHTML = songs[prevsong].split("/songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
             currentsongsinger.innerHTML = singers[1];
             currentsong.play();
+        }else{
+            $("#sprevious").css({'opacity':0.5})
+            return;
         }
     })
-
+    
     // this is next song button functionality
     $(next).click(function () {
-        let index = songs.indexOf(currentsong.src);
-
-        if (index != song.length) {
+        let index = songs.indexOf(filter_song_path(currentsong.src));
+        
+        if (index != (songs.length-1)) {
             let prevsong = index + 1;
             currentsong.src = songs[prevsong];
             currentsongname.innerHTML = songs[prevsong].split("songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
             currentsongsinger.innerHTML = singers[1];
             currentsong.play();
         }
+        else{
+            $("#snext").css({'opacity':0.5})
+            return
+        }
     })
+
+    const filter_song_path = (path)=>{
+        return path.replaceAll("%20", " ")
+    }
 }
+
+main()

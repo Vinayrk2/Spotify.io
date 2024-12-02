@@ -42,7 +42,7 @@
                 </thead>
                 <tbody id="tbody">
                     <% playlist.song_list.forEach((element,key) => { %>
-                        <tr data-href="<%= element.audio %>" title="<%= element.name %>">
+                        <tr data-href="http://localhost:3000<%= element.audio %>" title="<%= element.name %>" data-img="<%= element.image %>" data-title="<%= element.name %>" data-artists='<%= element.artist ? "By " + element.artist.join(",") : "Unknown Artist" %></tr>'>
                             <td> <%= key + 1 %> </td>
                             <td><div class="sandcname"><img style="margin-right: 10px;" src="<%= element.image %>" height="45">
                                     <div>
