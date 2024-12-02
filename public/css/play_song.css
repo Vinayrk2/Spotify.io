@@ -96,7 +96,7 @@ table {
   height: auto;
   width: 100%;
   background-color: rgb(5, 5, 5);
-  position: absolute;
+  position: fixed;
   padding-top: 7px;
   bottom: 0;
   left: 0;

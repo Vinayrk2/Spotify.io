@@ -118,14 +118,22 @@ let main = async () => {
         seekcircle.style.left = (currentsong.currentTime / currentsong.duration) * 100 + "%";
         
         if (currentsong.currentTime == currentsong.duration) {
-            let index = songs.indexOf(currentsong.src);
+            let index = songs.indexOf(filter_song_path(currentsong.src));
 
-            if (index != (song.length-1)) {
+            if (index != (songs.length-1)) {
                 let prevsong = index + 1;
                 currentsong.src = songs[prevsong];
                 currentsongname.innerHTML = songs[prevsong].split("songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
                 currentsongsinger.innerHTML = singers[1];
                 currentsong.play();
+            }
+            else if(index == songs.length -1){
+                currentsong.src = songs[0];
+                currentsongname.innerHTML = songs[0].split("songs/")[1].replaceAll("%20", " ").split(".mp3")[0];
+                currentsongsinger.innerHTML = singers[1];
+                currentsong.play();
+            }else{
+                alert("Please refresh the page.")
             }
         }
     })
@@ -158,7 +166,8 @@ let main = async () => {
     // this is next song button functionality
     $(next).click(function () {
         let index = songs.indexOf(filter_song_path(currentsong.src));
-        
+        console.log(index)
+        console.log(filter_song_path(currentsong.src))
         if (index != (songs.length-1)) {
             let prevsong = index + 1;
             currentsong.src = songs[prevsong];
@@ -173,7 +182,7 @@ let main = async () => {
     })
 
     const filter_song_path = (path)=>{
-        return path.replaceAll("%20", " ")
+        return path.slice(path.match('/songs/').index).replaceAll("%20", " ")
     }
 }
 
