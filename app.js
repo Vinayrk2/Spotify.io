@@ -6,6 +6,7 @@ const artist_routes = require("./src/routes/artist_routes")
 const playlist_routes = require("./src/routes/playlist_routes")
 const mongoose = require('mongoose')
 const request = require('request')
+const user_routes = require("./src/routes/user_routes")
 
 // Mongo connection
 mongoose.connect('mongodb://127.0.0.1:27017/spotify')
@@ -32,6 +33,7 @@ app.get("/",async (req,res)=>{
 app.use("/song", song_routes)
 app.use("/playlist", playlist_routes)
 app.use("/artist", artist_routes)
+app.use("/user", user_routes)
 
 // Start the server
 const PORT = 3000;

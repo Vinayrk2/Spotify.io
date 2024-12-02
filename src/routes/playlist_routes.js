@@ -11,6 +11,21 @@ router.get('/', async (req, res) => {
     }
 });
 
+router.get("/create/",(req,res)=>{
+    res.render("create_playlist")
+})
+
+
+router.post('/create/', async (req, res) => {
+    try {
+        const newApp = new Playlist(req.body);
+        const savedApp = await newApp.save();
+        res.status(201).send(savedApp);
+    } catch (error) {
+        res.status(500).send(error.message);
+    }
+});
+
 router.get('/:name/', async (req, res) => {
     try {
         const name = req.params.name;
@@ -21,15 +36,6 @@ router.get('/:name/', async (req, res) => {
     }
 });
 
-router.post('/', async (req, res) => {
-    try {
-        const newApp = new Playlist(req.body);
-        const savedApp = await newApp.save();
-        res.status(201).send(savedApp);
-    } catch (error) {
-        res.status(500).send(error.message);
-    }
-});
 
 router.put('/:id', async (req, res) => {
     try {

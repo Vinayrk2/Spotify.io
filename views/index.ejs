@@ -35,7 +35,8 @@
                     <div id="lib_list">
                         <h4>Create your first playlist</h4>
                         <h5 style="color: rgb(141, 141, 141); margin: 10px;">It's easy, Spotify will helps you</h5>
-                        <button id="lib_btn" class="cursor">Create Playlist</button>
+                        <!-- if user exists than direct create playlist and if not then login page redirect -->
+                        <a href="/playlist/create/"><button id="lib_btn" class="cursor">Create Playlist</button></a>
                     </div>
                     <div id="lib_list">
                         <h4>Let's find some podcasts to follow</h4>
@@ -61,9 +62,13 @@
                     <img id="nav_icon" style="transform: rotate(180deg);" src="img/nav.png" height="17">
                 </div>
                 <div>
-                    <button id="lib_btn" style="margin-top: 0px; background-color: transparent; color: gray;">Log
-                        In</button>
-                    <button id="lib_btn" style="margin-top: 0px;">Sign Up</button>
+                    <a href="/user/login/">
+                        <button id="lib_btn" style="margin-top: 0px; background-color: transparent; color: gray;">Log In</button>
+                    </a>
+
+                    <a href="/user/signup/">
+                        <button id="lib_btn" style="margin-top: 0px;">Sign Up</button>
+                    </a>                    
                 </div>
             </div>
             <!-- song playlist cards -->
